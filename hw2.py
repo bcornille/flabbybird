@@ -1,6 +1,7 @@
 import pygame, sys, pygame.locals
 pygame.init()
-window=pygame.display.set_mode((500, 400), 0, 32)
+winsize = (800, 450)
+window=pygame.display.set_mode(winsize, 0, 32)
 pygame.display.set_caption("Flabbybird")
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
@@ -25,12 +26,12 @@ while True:
             dy = 10
 
     for rect in rects:
-        rects[rect].right += 1
-        rects[rect].top += dy
-        if rects[rect].right > 500:
+        rects[rect].right += 2
+        rects[rect].top += 1 - dy
+        if rects[rect].right > winsize[0]:
             rects[rect].topleft=(0, 0)
 
     window.fill(WHITE)
     window.blit(triangle, rects['triangle'])
-    pygame.time.Clock().tick(20)
+    pygame.time.Clock().tick(60)
     pygame.display.update()
