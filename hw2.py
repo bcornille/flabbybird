@@ -9,12 +9,11 @@ RED = (255, 0, 0)
 GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
 
-triangle=pygame.Surface((150, 200))
-triangle.fill((0, 0, 0))
-pygame.draw.polygon(triangle, RED, ((70, 0), (150, 200), (0, 50)))
-triangle.set_colorkey((0, 0, 0))
+tree = pygame.image.load('pyne_icon_small.png').convert()
+tree = pygame.transform.scale(tree, (90, 77))
+#tree = pygame.transform.threshold(tree, tree, BLACK, threshold = (0,0,0,0), diff_color = (0,0,0,0), change_return = 2)
 
-rects={'triangle': triangle.get_rect()}
+rects={'tree': tree.get_rect()}
 
 while True:
     dy = 0
@@ -32,6 +31,6 @@ while True:
             rects[rect].topleft=(0, 0)
 
     window.fill(WHITE)
-    window.blit(triangle, rects['triangle'])
+    window.blit(tree, rects['tree'])
     pygame.time.Clock().tick(60)
     pygame.display.update()
